@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePecasTable extends Migration
+class Creatpedidos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreatePecasTable extends Migration
      */
     public function up()
     {
-        Schema::create('pecas', function (Blueprint $table) {
+        Schema::create('pedidos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->enum('status', [
+                'public/storage/images/baseline-check_circle_outline.svg',
+                'public/storage/images/baseline-highlight_off.svg']);
+            $table->string('adress');
+            $table->bigInteger('peca_id');
             $table->bigInteger('user_id');
-            $table->string('name');
-            $table->string('description');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreatePecasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pecas');
+        Schema::dropIfExists('pedidos');
     }
 }

@@ -13,5 +13,4 @@ class Peca extends Model
     public function users() {
     	return $this->belongsTo(User::class);
     }
-
 }

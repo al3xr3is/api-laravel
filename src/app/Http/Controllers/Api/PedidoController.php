@@ -26,6 +26,7 @@ class PedidoController extends Controller
 
             try {
             return response()->json($data = [
+                'usuario logado' => auth()->user()->type,
                 'pedidos' => $pedidos]);
             }
             catch(\Exception $e) {
