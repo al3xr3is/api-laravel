@@ -22,9 +22,10 @@ Route::post('/login', 'Api\AuthController@login');
 
 Route::namespace('Api')->name('api.')->group(function(){
 
-    Route::prefix('pedidos')->group(function(){
+    Route::prefix('pedidos')->middleware('auth:api')->group(function(){
 
-        Route::get('/', 'PedidoController@index')->name('index_pedidos')->middleware('auth:api');
+        Route::get('/', 'PedidoController@index')->name('index_pedidos');
+        Route::get('/{id}', 'PedidoController@teste')->name('index_pedidos');
         Route::get('/{id}', 'PedidoController@show')->name('show_pedidos');
 
         Route::post('/', 'PedidoController@store')->name('store_pedidos');
